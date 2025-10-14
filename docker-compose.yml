@@ -1,0 +1,53 @@
+services:
+  db:
+    image: postgres:15
+    container_name: db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: inkluaticket
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  
+  backend-py:
+    build:
+        context: ./backend-system-py
+        dockerfile: Dockerfile
+    container_name: backend-py
+    ports:
+      - "8000:8000"
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: inkluaticket
+    depends_on:
+      - db
+
+  backend-node:
+    build: ./backend-system-node/
+    container_name: backend-node
+    ports:
+      - "3001:3001"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/inkluaticket?schema=public
+      STRIPE_SECRET_KEY: sk_test_51RXmkCPAIrxpV0DuwciYuzLNuonlWFaV9a5ylRWcCK2GKiuJexZJ9cG6iDfhNlilYHzrQbMlbuplrs96gyo6m2u100RGMnbhA2
+    depends_on:
+      - backend-py  
+
+  front-end:
+    build:
+      context: ./frontend-system
+      dockerfile: Dockerfile
+    container_name: front-end
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_BASE=http://backend-node:3001
+    depends_on:
+      - backend-node
+
+volumes:
+  postgres_data:
