@@ -25,8 +25,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: inkluaticket
-    mem_limit: 1g
-    mem_reservation: 200m
+    mem_limit: 500m
+    mem_reservation: 100m
     depends_on:
       - db
 
@@ -38,8 +38,8 @@ services:
     environment:
       DATABASE_URL: postgresql://postgres:postgres@db:5432/inkluaticket?schema=public
       STRIPE_SECRET_KEY: sk_test_51RXmkCPAIrxpV0DuwciYuzLNuonlWFaV9a5ylRWcCK2GKiuJexZJ9cG6iDfhNlilYHzrQbMlbuplrs96gyo6m2u100RGMnbhA2
-    mem_limit: 1g
-    mem_reservation: 200m
+    mem_limit: 500m
+    mem_reservation: 100m
     depends_on:
       - backend-py  
 
