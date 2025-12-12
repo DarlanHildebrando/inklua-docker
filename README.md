@@ -86,3 +86,7 @@ Para acessar o estoque, acesse: http://localhost:3000/admin/estoque
 ![imagem do estoque](img_readme/image_2.png)
 
 Tela bonitona! :)
+
+### Atenção:
+
+Para comprar ingressos é necessária uma chave de teste da API Strip e configurar WebHook, ainda a ser explicado nesse readme!
