@@ -31,8 +31,33 @@ https://github.com/samuel-bordignon/frontend-system/
 
 para inicializar o projeto rode:
 
+### Frontend:
+
 ```bash
-docker compose up
+
+cd frontend-system/
+
+npm install
+
+npm audit fix #caso necessário
+
+npm run dev
+
+```
+
+Criar arquivo .env no frontend-system:
+
+```env
+
+NEXT_INTERNAL_API_BASE=http://backend-node:3001
+NEXT_PUBLIC_API_BASE=http://localhost:3001
+
+```
+
+### Backend e banco de dados
+
+```bash
+docker compose up --build
 ```
 Acesse http://localhost:3000/clientes/ (home page)
 
