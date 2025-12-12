@@ -57,6 +57,7 @@ NEXT_PUBLIC_API_BASE=http://localhost:3001
 ### Backend e banco de dados
 
 ```bash
+# Dentro de inklua-docker
 docker compose up --build
 ```
 Acesse http://localhost:3000/clientes/ (home page)
