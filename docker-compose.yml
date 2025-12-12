@@ -37,7 +37,8 @@ services:
       - "3001:3001"
     environment:
       DATABASE_URL: postgresql://postgres:postgres@db:5432/inkluaticket?schema=public
-      STRIPE_SECRET_KEY: sk_test_51RXmkCPAIrxpV0DuwciYuzLNuonlWFaV9a5ylRWcCK2GKiuJexZJ9cG6iDfhNlilYHzrQbMlbuplrs96gyo6m2u100RGMnbhA2
+      STRIPE_SECRET_KEY: sk_test_value
+      STRIPE_BUYTICKET_WEBHOOK: webhookvalue
     mem_limit: 500m
     mem_reservation: 100m
     depends_on:
